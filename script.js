@@ -16,3 +16,10 @@ getComputerChoice();
 getComputerChoice();
 getComputerChoice();
 
+let playerInput = window.prompt("What will you play?", '');
+
+console.log(playerInput);
+
+// function playerChoice() {
+
+// }
