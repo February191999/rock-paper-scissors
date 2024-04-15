@@ -20,11 +20,27 @@ let playerInput = window.prompt("What will you play?", '');
 
 console.log(playerInput);
 
-function playerChoice() {
-    choiceLower = playerInput.toLowerCase();
+function playerLower() {
+    let choiceLower = playerInput.toLowerCase(); //Converts input to lower case
 
-    return choiceLower
-
+    return choiceLower;
 }
 
-console.log(playerChoice())
+function playerCapitalizeFirst() {
+
+
+    let capitalizeFirst = playerLower()[0].toUpperCase() + playerLower().slice(1);
+
+    console.log(capitalizeFirst);
+}
+
+let playerChoice = playerCapitalizeFirst();
+
+// console.log(playerChoice())
+
+// function playRound(playerSelection, computerSelection) {
+//     let playerSelection = playerChoice();
+//     let computerSelection = getComputerChoice();
+
+//     if playerSelection === ''
+// }
