@@ -20,6 +20,11 @@ let playerInput = window.prompt("What will you play?", '');
 
 console.log(playerInput);
 
-// function playerChoice() {
+function playerChoice() {
+    choiceLower = playerInput.toLowerCase();
 
-// }
+    return choiceLower
+
+}
+
+console.log(playerChoice())
