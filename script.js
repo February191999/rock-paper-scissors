@@ -13,10 +13,6 @@ function getComputerChoice() {
 }
 
 getComputerChoice();
-getComputerChoice();
-getComputerChoice();
-getComputerChoice();
-getComputerChoice();
 
 let playerInput = window.prompt("What will you play?", "");
 
@@ -61,3 +57,20 @@ function playRound(playerSelection, computerSelection) {
 }
 
 console.log(playRound());
+getComputerChoice();
+
+console.log(playRound());
+getComputerChoice();
+console.log(playRound());
+getComputerChoice();
+console.log(playRound());
+
+function playGame() {
+    let playerScore = 0;
+    let computerScore = 0;
+    let match = 5;
+
+    for (i = 1; i <= match; i++) {
+        
+    }
+}
