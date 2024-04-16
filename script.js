@@ -8,6 +8,8 @@ function getNumberChoice() {
 function getComputerChoice() {
     let computerChoice = choices[getNumberChoice()]; //Index into random number generated from numberChoice
     console.log(computerChoice);
+
+    return computerChoice;
 }
 
 getComputerChoice();
@@ -32,13 +34,16 @@ function playerCapitalizeFirst() {
     let capitalizeFirst = playerLower()[0].toUpperCase() + playerLower().slice(1); //Capitalizes first letter of string
 
     console.log(capitalizeFirst);
+    return capitalizeFirst;
 }
 
 let playerChoice = playerCapitalizeFirst();
 
 function playRound(playerSelection, computerSelection) {
-    let playerSelection = playerChoice;
-    let computerSelection = getComputerChoice();
+    playerSelection = playerChoice;
+    computerSelection = getComputerChoice();
+
+    console.log(typeof(playerSelection));
 
     if (playerSelection === computerSelection) {
         return `Tied! You chose ${playerSelection} against your opponent's ${computerSelection}!`  
@@ -54,3 +59,5 @@ function playRound(playerSelection, computerSelection) {
         return `You lost! You chose ${playerSelection} against your opponent's ${computerSelection}!`
     }
 }
+
+console.log(playRound());
