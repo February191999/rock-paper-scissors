@@ -16,7 +16,7 @@ getComputerChoice();
 getComputerChoice();
 getComputerChoice();
 
-let playerInput = window.prompt("What will you play?", '');
+let playerInput = window.prompt("What will you play?", "");
 
 console.log(playerInput);
 
@@ -29,18 +29,28 @@ function playerLower() {
 function playerCapitalizeFirst() {
 
 
-    let capitalizeFirst = playerLower()[0].toUpperCase() + playerLower().slice(1);
+    let capitalizeFirst = playerLower()[0].toUpperCase() + playerLower().slice(1); //Capitalizes first letter of string
 
     console.log(capitalizeFirst);
 }
 
 let playerChoice = playerCapitalizeFirst();
 
-// console.log(playerChoice())
+function playRound(playerSelection, computerSelection) {
+    let playerSelection = playerChoice;
+    let computerSelection = getComputerChoice();
 
-// function playRound(playerSelection, computerSelection) {
-//     let playerSelection = playerChoice();
-//     let computerSelection = getComputerChoice();
-
-//     if playerSelection === ''
-// }
+    if (playerSelection === computerSelection) {
+        return `Tied! You chose ${playerSelection} against your opponent's ${computerSelection}!`  
+    } else if (
+        playerSelection === "Rock" && computerSelection === "Scissors" || 
+        playerSelection === "Scissors" && computerSelection === "Paper" || 
+        playerSelection === "Paper" && computerSelection === "Rock"
+        ) {
+            return `You won! You chose ${playerSelection} against your opponent's ${computerSelection}!`
+    } else if (playerSelection === "") {
+        return "Please enter your choice!"
+    } else {
+        return `You lost! You chose ${playerSelection} against your opponent's ${computerSelection}!`
+    }
+}
