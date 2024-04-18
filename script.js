@@ -1,4 +1,4 @@
-const choices = ["Rock", "Paper", "Scissors"]; //Create list of choices
+const choices = ["rock", "paper", "scissors"]; //Create list of choices
 
 function getNumberChoice() {
     let numberChoice = Math.floor(Math.random() * 3); //Generates random number between 0 and 2
@@ -7,39 +7,17 @@ function getNumberChoice() {
 
 function getComputerChoice() {
     let computerChoice = choices[getNumberChoice()]; //Index into random number generated from numberChoice
-    console.log(computerChoice);
 
     return computerChoice;
 }
 
-getComputerChoice();
-
 let playerInput = window.prompt("What will you play?", "");
 
-// console.log(playerInput);
+let playerChoice = playerInput.toLowerCase();
 
-function playerLower() {
-    let choiceLower = playerInput.toLowerCase(); //Converts input to lower case
-
-    return choiceLower;
-}
-
-function playerCapitalizeFirst() {
-
-
-    let capitalizeFirst = playerLower()[0].toUpperCase() + playerLower().slice(1); //Capitalizes first letter of string
-
-    console.log(capitalizeFirst);
-    return capitalizeFirst;
-}
-
-let playerChoice = playerCapitalizeFirst();
+const playerSelection = playerChoice;
 
 function playRound(playerSelection, computerSelection) {
-    playerSelection = playerChoice;
-    computerSelection = getComputerChoice();
-
-    console.log(typeof(playerSelection));
 
     if (playerSelection === computerSelection) {
         return `Tied! You chose ${playerSelection} against your opponent's ${computerSelection}!`  
@@ -56,27 +34,6 @@ function playRound(playerSelection, computerSelection) {
     }
 }
 
-function playGame() {
+const computerSelection = getComputerChoice();
 
-    console.log(playerInput);
-    getComputerChoice();
-    console.log(playRound());
-
-    console.log(playerInput);
-    getComputerChoice();
-    console.log(playRound());
-
-    console.log(playerInput);
-    getComputerChoice();
-    console.log(playRound());
-    
-    console.log(playerInput);
-    getComputerChoice();
-    console.log(playRound());
-    
-    console.log(playerInput);
-    getComputerChoice();
-    console.log(playRound());
-}
-
-playGame();
+console.log(playRound(playerSelection, computerSelection));
