@@ -41,7 +41,7 @@ function playRound(playerSelection, computerSelection) {
 
 const body = document.querySelector("body");
 const uiDiv = document.createElement("div");
-const playerSelectionDiv = document.createElement("button");
+const playerSelectionDiv = document.createElement("div");
 const startButton = document.createElement("button");
 const rockButton = document.createElement("button");
 const paperButton = document.createElement("button");
@@ -54,13 +54,48 @@ uiDiv.setAttribute("style", "display: flex; height: 50%; width: 50%; flex-direct
 
 startButton.classList.add("start-button");
 startButton.textContent = "Start Game";
-startButton.setAttribute("style", "font-weight: bold; ")
+startButton.setAttribute("style", "font-weight: bold; width: 250px; align-self: center;")
+
+playerSelectionDiv.setAttribute("style", "display: flex; justify-content: space-between; padding-left: 30%; padding-right: 30%; margin: 0;");
 
 rockButton.textContent = "Rock";
+rockButton.addEventListener("mouseover", () => {
+    rockButton.style.backgroundColor = "red";
+    rockButton.style.color = "white";
+});
+rockButton.addEventListener("mouseout", () => {
+    rockButton.style.backgroundColor = "";
+    rockButton.style.color = "black";
+});
+rockButton.addEventListener("click", () => {
+
+})
 
 paperButton.textContent = "Paper";
+paperButton.addEventListener("mouseover", () => {
+    paperButton.style.backgroundColor = "blue";
+    paperButton.style.color = "white";
+});
+paperButton.addEventListener("mouseout", () => {
+    paperButton.style.backgroundColor = "";
+    paperButton.style.color = "black";
+});
+paperButton.addEventListener("click", () => {
+
+})
 
 scissorsButton.textContent = "Scissors";
+scissorsButton.addEventListener("mouseover", () => {
+    scissorsButton.style.backgroundColor = "green";
+    scissorsButton.style.color = "white";
+});
+scissorsButton.addEventListener("mouseout", () => {
+    scissorsButton.style.backgroundColor = "";
+    scissorsButton.style.color = "black";
+});
+scissorsButton.addEventListener("click", () => {
+
+})
 
 uiDiv.appendChild(startButton);
 body.appendChild(uiDiv);
