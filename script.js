@@ -41,13 +41,20 @@ function playRound(playerSelection, computerSelection) {
 
 const body = document.querySelector("body");
 const uiDiv = document.createElement("div");
+const playerSelectionDiv = document.createElement("button");
 const startButton = document.createElement("button");
 const rockButton = document.createElement("button");
 const paperButton = document.createElement("button");
 const scissorsButton = document.createElement("button");
 
+body.setAttribute("style", "display: flex; justify-content: space-around;")
+
+uiDiv.classList.add("ui-div");
+uiDiv.setAttribute("style", "display: flex; height: 50%; width: 50%; flex-direction: column; border: 5px solid black;")
+
 startButton.classList.add("start-button");
 startButton.textContent = "Start Game";
+
 
 
 uiDiv.appendChild(startButton);
