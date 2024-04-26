@@ -1,4 +1,4 @@
-const choices = ["rock", "paper", "scissors"]; //Create list of choices
+const choices = ["Rock", "Paper", "Scissors"]; //Create list of choices
 
 function getNumberChoice() {
     let numberChoice = Math.floor(Math.random() * 3); //Generates random number between 0 and 2
@@ -7,37 +7,47 @@ function getNumberChoice() {
 
 function getComputerChoice() {
     let computerChoice = choices[getNumberChoice()]; //Index into random number generated from numberChoice
+    console.log(computerChoice);
 
     return computerChoice;
 }
 
-let playerChoice = window.prompt("What will you play?", "").toLowerCase();
+getComputerChoice();
 
-function whoWon() {
+let playerInput = window.prompt("What will you play?", "");
+
+// console.log(playerInput);
+
+function playerLower() {
+    let choiceLower = playerInput.toLowerCase(); //Converts input to lower case
+
+    return choiceLower;
+}
+
+function playerCapitalizeFirst() {
+
+
+    let capitalizeFirst = playerLower()[0].toUpperCase() + playerLower().slice(1); //Capitalizes first letter of string
+
+    console.log(capitalizeFirst);
+    return capitalizeFirst;
+}
+
+let playerChoice = playerCapitalizeFirst();
+
+function playRound(playerSelection, computerSelection) {
+    playerSelection = playerChoice;
+    computerSelection = getComputerChoice();
+
+    console.log(typeof(playerSelection));
+
     if (playerSelection === computerSelection) {
-        return "Tied"  
+        return `Tied! You chose ${playerSelection} against your opponent's ${computerSelection}!`  
     } else if (
         playerSelection === "Rock" && computerSelection === "Scissors" || 
         playerSelection === "Scissors" && computerSelection === "Paper" || 
         playerSelection === "Paper" && computerSelection === "Rock"
         ) {
-            return "Player"
-    } else {
-        return "Computer"
-    }
-}
-
-const playerSelection = playerChoice;
-
-function playRound(playerSelection, computerSelection) {
-
-    whoWon();
-    
-    playerSelection = window.prompt("What will you play?", "").toLowerCase();
-
-    if (whoWon() === "Tied") {
-        return `Tied! You chose ${playerSelection} against your opponent's ${computerSelection}!`  
-    } else if (whoWon() === "Player") {
             return `You won! You chose ${playerSelection} against your opponent's ${computerSelection}!`
     } else if (playerSelection === "") {
         return "Please enter your choice!"
@@ -45,36 +55,3 @@ function playRound(playerSelection, computerSelection) {
         return `You lost! You chose ${playerSelection} against your opponent's ${computerSelection}!`
     }
 }
-
-const computerSelection = getComputerChoice();
-
-console.log(playRound(playerSelection, computerSelection));
-
-function playGame() {
-    let playerScore = 0;
-    let computerScore = 0;
-    let match = 5;
-
-    for (i = 0; i < match; i++){
-        playRound(playerSelection, computerSelection);
-        if (whoWon() === "Tied") {
-            continue;
-        } else if (whoWon() === "Player") {
-            ++playerScore;
-            console.log(`Nice! Player Score: ${playerScore}`)
-            console.log(`Computer Score: ${computerScore}`)
-        } else {
-            ++computerScore;
-            console.log(`Oh No! Player Score: ${playerScore}`)
-            console.log(`Computer Score: ${computerScore}`)
-        }
-    }
-
-    if (i === 5 && playerScore === 3) {
-        console.log("Congratulations! You're the champion!")
-    } else if (i === 5 && computerScore === 3) {
-        console.log("Game Over! You Lose!")
-    }
-}
-
-playGame();
