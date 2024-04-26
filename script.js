@@ -54,8 +54,17 @@ uiDiv.setAttribute("style", "display: flex; height: 50%; width: 50%; flex-direct
 
 startButton.classList.add("start-button");
 startButton.textContent = "Start Game";
+startButton.setAttribute("style", "font-weight: bold; ")
 
+rockButton.textContent = "Rock";
 
+paperButton.textContent = "Paper";
+
+scissorsButton.textContent = "Scissors";
 
 uiDiv.appendChild(startButton);
 body.appendChild(uiDiv);
+playerSelectionDiv.appendChild(rockButton);
+playerSelectionDiv.appendChild(paperButton);
+playerSelectionDiv.appendChild(scissorsButton);
+uiDiv.appendChild(playerSelectionDiv);
