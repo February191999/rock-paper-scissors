@@ -14,26 +14,9 @@ function getComputerChoice() {
 
 getComputerChoice();
 
-let playerInput = window.prompt("What will you play?", "");
+let playerInput = '';
 
-// console.log(playerInput);
-
-function playerLower() {
-    let choiceLower = playerInput.toLowerCase(); //Converts input to lower case
-
-    return choiceLower;
-}
-
-function playerCapitalizeFirst() {
-
-
-    let capitalizeFirst = playerLower()[0].toUpperCase() + playerLower().slice(1); //Capitalizes first letter of string
-
-    console.log(capitalizeFirst);
-    return capitalizeFirst;
-}
-
-let playerChoice = playerCapitalizeFirst();
+let playerChoice = playerInput;
 
 function playRound(playerSelection, computerSelection) {
     playerSelection = playerChoice;
@@ -55,3 +38,17 @@ function playRound(playerSelection, computerSelection) {
         return `You lost! You chose ${playerSelection} against your opponent's ${computerSelection}!`
     }
 }
+
+const body = document.querySelector("body");
+const uiDiv = document.createElement("div");
+const startButton = document.createElement("button");
+const rockButton = document.createElement("button");
+const paperButton = document.createElement("button");
+const scissorsButton = document.createElement("button");
+
+startButton.classList.add("start-button");
+startButton.textContent = "Start Game";
+
+
+uiDiv.appendChild(startButton);
+body.appendChild(uiDiv);
