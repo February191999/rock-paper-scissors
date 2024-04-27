@@ -7,7 +7,6 @@ function getNumberChoice() {
 
 function getComputerChoice() {
     let computerChoice = choices[getNumberChoice()]; //Index into random number generated from numberChoice
-    console.log(computerChoice);
 
     return computerChoice;
 }
@@ -18,21 +17,22 @@ function playRound(playerSelection, computerSelection) {
 
     console.log(rockButton.value);
     console.log(playerSelection);
+    console.log(computerSelection);
 
     console.log(typeof(playerSelection));
 
     if (playerSelection === computerSelection) {
-        results.textContent = `Tied! You chose ${playerSelection} against your opponent's ${computerSelection}!`  
+        return outputPara.textContent = `Result: Tied! You chose ${playerSelection} against your opponent's ${computerSelection}!`;  
     } else if (
         playerSelection === "Rock" && computerSelection === "Scissors" || 
         playerSelection === "Scissors" && computerSelection === "Paper" || 
         playerSelection === "Paper" && computerSelection === "Rock"
         ) {
-            results.textContent = `You won! You chose ${playerSelection} against your opponent's ${computerSelection}!`
+            return outputPara.textContent = `Result: You won! You chose ${playerSelection} against your opponent's ${computerSelection}!`;
     } else if (playerSelection === "") {
-        return "Please enter your choice!"
+        return outputPara.textContent = "Result: Please enter your choice!";
     } else {
-        return `You lost! You chose ${playerSelection} against your opponent's ${computerSelection}!`
+        return outputPara.textContent = `Result: You lost! You chose ${playerSelection} against your opponent's ${computerSelection}!`;
     }
 }
 
@@ -45,6 +45,7 @@ const scissorsButton = document.createElement("button");
 const output = document.createElement("div");
 const outputPara = document.createElement("p");
 const results = outputPara.value;
+const rockButtonClass = document.querySelector("rock-button");
 let playerChoice = "";
 
 body.setAttribute("style", "display: flex; justify-content: space-around;")
@@ -58,6 +59,7 @@ outputPara.textContent = "Result: ";
 outputPara.setAttribute("style", "font-weight: bold; padding-left: 10%;")
 
 rockButton.textContent = "Rock";
+rockButton.classList.add("rock-button");
 rockButton.value = "Rock";
 rockButton.addEventListener("mouseover", () => {
     rockButton.style.backgroundColor = "red";
@@ -68,8 +70,11 @@ rockButton.addEventListener("mouseout", () => {
     rockButton.style.color = "black";
 });
 rockButton.addEventListener("click", () => {
+    console.log(rockButton.value);
     playerChoice = rockButton.value;
-    playRound();
+    console.log(playerChoice);
+    console.log(playRound());
+    
 });
 
 paperButton.textContent = "Paper";
