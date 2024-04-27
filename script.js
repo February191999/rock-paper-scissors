@@ -11,28 +11,45 @@ function getComputerChoice() {
     return computerChoice;
 }
 
+let playerScore = 0;
+let computerScore = 0;
+let resultValue = '';
+
 function playRound(playerSelection, computerSelection) {
+
     playerSelection = playerChoice;
     computerSelection = getComputerChoice();
-
-    console.log(rockButton.value);
-    console.log(playerSelection);
-    console.log(computerSelection);
-
-    console.log(typeof(playerSelection));
-
+        
     if (playerSelection === computerSelection) {
-        return outputPara.textContent = `Result: Tied! You chose ${playerSelection} against your opponent's ${computerSelection}!`;  
+        resultValue = `Result: Tied! You chose ${playerSelection} against your opponent's ${computerSelection}! Player Score: ${playerScore} Computer Score: ${computerScore}`;
+        outputPara.textContent = resultValue;
+        listItem.appendChild(outputPara);  
+        output.appendChild(listItem);
     } else if (
         playerSelection === "Rock" && computerSelection === "Scissors" || 
         playerSelection === "Scissors" && computerSelection === "Paper" || 
         playerSelection === "Paper" && computerSelection === "Rock"
-        ) {
-            return outputPara.textContent = `Result: You won! You chose ${playerSelection} against your opponent's ${computerSelection}!`;
-    } else if (playerSelection === "") {
-        return outputPara.textContent = "Result: Please enter your choice!";
+    ) {
+        ++playerScore;
+        outputPara.textContent = `Result: You won! You chose ${playerSelection} against your opponent's ${computerSelection}! Player Score: ${playerScore} Computer Score: ${computerScore}`;
+        // listItem.appendChild(outputPara);
     } else {
-        return outputPara.textContent = `Result: You lost! You chose ${playerSelection} against your opponent's ${computerSelection}!`;
+        ++computerScore;
+        console.log(computerScore);
+        outputPara.textContent = `Result: You lost! You chose ${playerSelection} against your opponent's ${computerSelection}! Player Score: ${playerScore} Computer Score: ${computerScore}`;
+        // listItem.appendChild(outputPara);
+    }
+}
+
+function checkGameOver() {
+    if (playerScore === 5) {
+        outputPara.textContent = `Congratulations! You won! Player Score: ${playerScore} Computer Score: ${computerScore}`;
+        playerScore = 0;
+        computerScore = 0;
+    } else if (computerScore === 5) {
+        outputPara.textContent = `Game Over! You lost! Player Score: ${playerScore} Computer Score: ${computerScore}`;
+        playerScore = 0;
+        computerScore = 0;
     }
 }
 
@@ -42,10 +59,9 @@ const playerSelectionDiv = document.createElement("div");
 const rockButton = document.createElement("button");
 const paperButton = document.createElement("button");
 const scissorsButton = document.createElement("button");
-const output = document.createElement("div");
-const outputPara = document.createElement("p");
-const results = outputPara.value;
-const rockButtonClass = document.querySelector("rock-button");
+const output = document.createElement("ul");
+const outputPara = document.createElement("span");
+const listItem = document.createElement("li");
 let playerChoice = "";
 
 body.setAttribute("style", "display: flex; justify-content: space-around;")
@@ -55,11 +71,12 @@ uiDiv.setAttribute("style", "display: flex; height: 50%; width: 50%; flex-direct
 
 playerSelectionDiv.setAttribute("style", "display: flex; justify-content: space-between; padding-left: 30%; padding-right: 30%; padding-top: 10px; margin: 0;");
 
+output.setAttribute("style", "list-style-type: none;");
+
 outputPara.textContent = "Result: ";
-outputPara.setAttribute("style", "font-weight: bold; padding-left: 10%;")
+outputPara.setAttribute("style", "font-weight: bold; padding-left: 10%;");
 
 rockButton.textContent = "Rock";
-rockButton.classList.add("rock-button");
 rockButton.value = "Rock";
 rockButton.addEventListener("mouseover", () => {
     rockButton.style.backgroundColor = "red";
@@ -70,11 +87,9 @@ rockButton.addEventListener("mouseout", () => {
     rockButton.style.color = "black";
 });
 rockButton.addEventListener("click", () => {
-    console.log(rockButton.value);
     playerChoice = rockButton.value;
-    console.log(playerChoice);
-    console.log(playRound());
-    
+    playRound();
+    checkGameOver();
 });
 
 paperButton.textContent = "Paper";
@@ -88,7 +103,9 @@ paperButton.addEventListener("mouseout", () => {
     paperButton.style.color = "black";
 });
 paperButton.addEventListener("click", () => {
-
+    playerChoice = paperButton.value;
+    playRound();
+    checkGameOver();
 })
 
 scissorsButton.textContent = "Scissors";
@@ -102,7 +119,9 @@ scissorsButton.addEventListener("mouseout", () => {
     scissorsButton.style.color = "black";
 });
 scissorsButton.addEventListener("click", () => {
-
+    playerChoice = scissorsButton.value;
+    playRound();
+    checkGameOver();
 })
 
 body.appendChild(uiDiv);
@@ -110,5 +129,6 @@ playerSelectionDiv.appendChild(rockButton);
 playerSelectionDiv.appendChild(paperButton);
 playerSelectionDiv.appendChild(scissorsButton);
 uiDiv.appendChild(playerSelectionDiv);
-output.appendChild(outputPara);
+output.appendChild(listItem);
+listItem.appendChild(outputPara);
 uiDiv.appendChild(output);
